@@ -1,10 +1,10 @@
 
 import streamlit as st
 import openai
-import time
+import os
 
-# Configurar a chave da OpenAI (substitua pela sua chave no Streamlit Secrets)
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+# Acesso à API Key
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.set_page_config(page_title="Painel da Lili", layout="centered")
 st.title("🩺 Painel da Lili")
@@ -28,9 +28,12 @@ if prompt:
     st.chat_message("user").markdown(prompt)
 
     with st.spinner("Lili está pensando..."):
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4",
-            messages=[{"role": r, "content": m} for r, m in st.session_state.chat_history],
+            messages=[
+                {"role": r, "content": m}
+                for r, m in st.session_state.chat_history
+            ],
             temperature=0.7,
         )
         reply = response.choices[0].message.content
