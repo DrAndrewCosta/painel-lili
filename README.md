@@ -1,7 +1,7 @@
 
-# Painel da Lili
+# Painel da Lili - GPT 3.5 Turbo
 
-Um painel colaborativo e em tempo real para conversar com a assistente Lili via texto.
+Um painel colaborativo para conversar com a assistente Lili via texto, utilizando o modelo gpt-3.5-turbo (mais leve e estável).
 
 ## Como usar no Streamlit Cloud
 
