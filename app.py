@@ -29,7 +29,7 @@ if prompt:
 
     with st.spinner("Lili está pensando..."):
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": r, "content": m}
                 for r, m in st.session_state.chat_history
